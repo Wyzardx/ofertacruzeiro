@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resgatar Prêmio - Cruzeiro Esporte Clube</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="claim-body">
+    <div class="claim-container">
+        <div class="claim-header">
+            <div class="cruzeiro-logo-small">
+                <div class="logo-shield-small">
+                    <span class="logo-text-small">CEC</span>
+                </div>
+            </div>
+            <h1>Seu endereço foi cadastrado e seu prêmio foi reservado!</h1>
+        </div>
+
+        <div class="claim-content">
+            <p class="claim-description">
+                Escolha o tamanho da sua camiseta e pague a taxa de frete para receber o seu prêmio.
+            </p>
+
+            <div class="jersey-display-small">
+                <div class="jersey-preview-small">
+                    <div class="jersey-base-small"></div>
+                    <div class="jersey-details-small">
+                        <div class="jersey-logo-small-display"></div>
+                        <div class="jersey-text-small">CRUZEIRO</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pricing-info">
+                <div class="price-original">
+                    <span class="price-label">de:</span>
+                    <span class="price-value original">R$ 359,90</span>
+                </div>
+                <div class="price-current">
+                    <span class="price-label">POR:</span>
+                    <span class="price-value current">R$ 0,00</span>
+                </div>
+                <div class="price-shipping">
+                    <span class="price-label">FRETE:</span>
+                    <span class="price-value shipping">R$ 38,72</span>
+                </div>
+            </div>
+
+            <div class="explanation-text">
+                <p>
+                    Infelizmente o Cruzeiro e a Betfair não conseguem bancar toda a operação sozinhos 
+                    e precisam da ajuda dos torcedores para pagar apenas a taxa única de frete via Sedex, 
+                    que é calculada através do CEP que você informou na página anterior.
+                </p>
+                <p>
+                    <strong>Você irá levar uma camiseta oficial no valor de R$ 359,90 apenas pelo preço do frete.</strong>
+                </p>
+            </div>
+
+            <div class="size-selection">
+                <h3>Selecione o tamanho:</h3>
+                <div class="size-buttons">
+                    <button class="size-btn" data-size="P">P</button>
+                    <button class="size-btn" data-size="M">M</button>
+                    <button class="size-btn" data-size="G">G</button>
+                    <button class="size-btn" data-size="GG">GG</button>
+                    <button class="size-btn" data-size="G1">G1</button>
+                </div>
+            </div>
+
+            <button class="pay-shipping-button" onclick="payShipping()">
+                💳 PAGAR FRETE - R$ 38,72
+            </button>
+        </div>
+    </div>
+
+    <script src="resgatar.js"></script>
+</body>
+</html>

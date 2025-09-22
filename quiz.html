@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio do Cruzeiro - Quiz Oficial</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="quiz-body">
+    <div class="quiz-container">
+        <div class="quiz-header">
+            <div class="cruzeiro-logo-small">
+                <div class="logo-shield-small">
+                    <span class="logo-text-small">CEC</span>
+                </div>
+            </div>
+            <h1>Desafio do Cruzeiro!</h1>
+            <div class="quiz-progress">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+            <div class="quiz-step" id="quizStep">1/5</div>
+        </div>
+
+        <div class="quiz-content" id="quizContent">
+            <div class="question-container">
+                <h2 id="questionText">Qual é o apelido mais conhecido do Cruzeiro?</h2>
+                <div class="options-container" id="optionsContainer">
+                    <button class="option-btn" onclick="selectOption(true)">Raposa</button>
+                    <button class="option-btn" onclick="selectOption(false)">Galo</button>
+                    <button class="option-btn" onclick="selectOption(false)">Peixe</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="quiz-result" id="quizResult" style="display: none;">
+            <div class="result-icon">🎉</div>
+            <h2>Parabéns, Cruzeirense!</h2>
+            <p>Você conquistou uma Camisa da Raposa Grátis!</p>
+            <div class="result-message" id="resultMessage">Redirecionando...</div>
+        </div>
+    </div>
+
+    <script src="quiz.js"></script>
+</body>
+</html>
