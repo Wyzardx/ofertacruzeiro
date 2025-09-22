@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cruzeiro Store - Camisetas Oficiais com Desconto Exclusivo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-background">
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span>🏆 OFERTA EXCLUSIVA</span>
+                </div>
+                <h1 class="hero-title">
+                    Camiseta Oficial do<br>
+                    <span class="highlight">CRUZEIRO</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Personalize sua camisa com nome e número.<br>
+                    <strong>Responda nosso quiz e ganhe até 40% de desconto!</strong>
+                </p>
+                <div class="hero-price">
+                    <span class="price-old">R$ 199,90</span>
+                    <span class="price-new">A partir de R$ 119,90</span>
+                </div>
+                <button class="cta-button" onclick="startQuiz()">
+                    🎯 COMEÇAR QUIZ E GANHAR DESCONTO
+                </button>
+                <div class="hero-features">
+                    <div class="feature">
+                        <span class="feature-icon">✅</span>
+                        <span>Personalização Gratuita</span>
+                    </div>
+                    <div class="feature">
+                        <span class="feature-icon">🚚</span>
+                        <span>Frete Grátis Brasil</span>
+                    </div>
+                    <div class="feature">
+                        <span class="feature-icon">🔒</span>
+                        <span>Pagamento Seguro</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="jersey-preview" id="jerseyPreview">
+                    <div class="jersey-base"></div>
+                    <div class="jersey-details">
+                        <div class="jersey-logo"></div>
+                        <div class="jersey-name" id="previewName">SEU NOME</div>
+                        <div class="jersey-number" id="previewNumber">10</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quiz Modal -->
+    <div class="quiz-modal" id="quizModal">
+        <div class="quiz-content">
+            <div class="quiz-header">
+                <h2>🎯 Quiz Cruzeirense</h2>
+                <p>Responda e ganhe seu desconto exclusivo!</p>
+                <div class="quiz-progress">
+                    <div class="progress-bar" id="progressBar"></div>
+                </div>
+                <span class="quiz-step" id="quizStep">1/5</span>
+            </div>
+            
+            <div class="quiz-question" id="quizQuestion">
+                <h3 id="questionText">Em que ano o Cruzeiro foi fundado?</h3>
+                <div class="quiz-options" id="quizOptions">
+                    <button class="quiz-option" onclick="selectAnswer(this, 0)">1918</button>
+                    <button class="quiz-option" onclick="selectAnswer(this, 1)">1921</button>
+                    <button class="quiz-option" onclick="selectAnswer(this, 2)">1925</button>
+                    <button class="quiz-option" onclick="selectAnswer(this, 3)">1930</button>
+                </div>
+            </div>
+
+            <div class="quiz-result" id="quizResult" style="display: none;">
+                <div class="result-icon">🎉</div>
+                <h3>Parabéns, Cruzeirense!</h3>
+                <p>Você acertou <span id="correctAnswers">0</span> de 5 perguntas</p>
+                <div class="discount-earned">
+                    <span class="discount-label">SEU DESCONTO:</span>
+                    <span class="discount-value" id="discountValue">20%</span>
+                </div>
+                <button class="claim-discount" onclick="claimDiscount()">
+                    RESGATAR DESCONTO
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Customization Section -->
+    <section class="customization" id="customize" style="display: none;">
+        <div class="container">
+            <div class="section-header">
+                <h2>Personalize Sua Camisa</h2>
+                <p>Crie a camisa dos seus sonhos com nome e número personalizados</p>
+            </div>
+            
+            <div class="customization-content">
+                <div class="jersey-customizer">
+                    <div class="jersey-display">
+                        <div class="jersey-preview-large" id="jerseyPreviewLarge">
+                            <div class="jersey-base-large"></div>
+                            <div class="jersey-details-large">
+                                <div class="jersey-logo-large"></div>
+                                <div class="jersey-name-large" id="previewNameLarge">SEU NOME</div>
+                                <div class="jersey-number-large" id="previewNumberLarge">10</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="customization-options">
+                        <div class="option-group">
+                            <label>Tamanho da Camisa</label>
+                            <div class="size-options">
+                                <button class="size-btn" onclick="selectSize(this, 'P')">P</button>
+                                <button class="size-btn active" onclick="selectSize(this, 'M')">M</button>
+                                <button class="size-btn" onclick="selectSize(this, 'G')">G</button>
+                                <button class="size-btn" onclick="selectSize(this, 'GG')">GG</button>
+                                <button class="size-btn" onclick="selectSize(this, 'XG')">XG</button>
+                            </div>
+                        </div>
+                        
+                        <div class="option-group">
+                            <label for="playerName">Nome do Jogador</label>
+                            <input type="text" id="playerName" placeholder="Digite o nome" maxlength="12" oninput="updatePreview()">
+                        </div>
+                        
+                        <div class="option-group">
+                            <label for="playerNumber">Número</label>
+                            <input type="number" id="playerNumber" placeholder="00" min="1" max="99" value="10" oninput="updatePreview()">
+                        </div>
+                        
+                        <div class="price-summary">
+                            <div class="price-line">
+                                <span>Camisa Oficial Cruzeiro</span>
+                                <span>R$ 199,90</span>
+                            </div>
+                            <div class="price-line discount-line">
+                                <span>Desconto Quiz (<span id="appliedDiscount">20%</span>)</span>
+                                <span>- R$ <span id="discountAmount">39,98</span></span>
+                            </div>
+                            <div class="price-line">
+                                <span>Personalização</span>
+                                <span class="free">GRÁTIS</span>
+                            </div>
+                            <div class="price-total">
+                                <span>Total</span>
+                                <span>R$ <span id="finalPrice">159,92</span></span>
+                            </div>
+                        </div>
+                        
+                        <button class="add-to-cart" onclick="showAddressForm()">
+                            🛒 ADICIONAR AO CARRINHO
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Address Form -->
+    <section class="address-section" id="addressSection" style="display: none;">
+        <div class="container">
+            <div class="section-header">
+                <h2>Dados para Entrega</h2>
+                <p>Preencha seus dados para finalizar o pedido</p>
+            </div>
+            
+            <div class="address-form">
+                <div class="form-group">
+                    <label for="fullName">Nome Completo *</label>
+                    <input type="text" id="fullName" required>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email">E-mail *</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Telefone *</label>
+                        <input type="tel" id="phone" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="cep">CEP *</label>
+                        <input type="text" id="cep" required onblur="searchCEP()">
+                    </div>
+                    <div class="form-group">
+                        <label for="city">Cidade *</label>
+                        <input type="text" id="city" required readonly>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="address">Endereço *</label>
+                    <input type="text" id="address" required readonly>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="number">Número *</label>
+                        <input type="text" id="number" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="complement">Complemento</label>
+                        <input type="text" id="complement">
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="neighborhood">Bairro *</label>
+                        <input type="text" id="neighborhood" required readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="state">Estado *</label>
+                        <input type="text" id="state" required readonly>
+                    </div>
+                </div>
+                
+                <div class="order-summary">
+                    <h3>Resumo do Pedido</h3>
+                    <div class="summary-item">
+                        <span>Camisa Personalizada</span>
+                        <span>Tamanho: <span id="summarySize">M</span></span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Nome: <span id="summaryName">SEU NOME</span></span>
+                        <span>Número: <span id="summaryNumber">10</span></span>
+                    </div>
+                    <div class="summary-total">
+                        <span>Total: R$ <span id="summaryPrice">159,92</span></span>
+                    </div>
+                </div>
+                
+                <button class="checkout-button" onclick="proceedToCheckout()">
+                    💳 FINALIZAR PEDIDO - R$ <span id="checkoutPrice">159,92</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <div class="logo-shield">
+                            <span class="logo-text">CEC</span>
+                        </div>
+                    </div>
+                    <p>Cruzeiro Store Oficial<br>A maior torcida de Minas</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Atendimento</h4>
+                    <p>📞 (31) 3333-4444</p>
+                    <p>📧 vendas@cruzeirostore.com.br</p>
+                    <p>🕒 Seg-Sex: 9h às 18h</p>
+                </div>
+                <div class="footer-security">
+                    <h4>Segurança</h4>
+                    <div class="security-badges">
+                        <span class="badge">🔒 SSL</span>
+                        <span class="badge">💳 PCI</span>
+                        <span class="badge">✅ Verificado</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Cruzeiro Store. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
